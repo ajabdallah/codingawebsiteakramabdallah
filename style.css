@@ -1,0 +1,278 @@
+/* ===== THEME ===== */
+:root{
+    --bg:#ffffff; --bg-alt:#f7f8fc; --surface:#ffffff;
+    --text:#222222; --muted:#555555;
+    --primary:#7c4dff; --primary-ink:#ffffff;
+    --accent:#ff4081;
+    --link:#0066cc; --link-hover:#004999;
+    --border:#dddddd; --figure-bg:#fafafa;
+    --font-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --font-serif:"Playfair Display",Georgia,"Times New Roman",serif;
+    --font-mono:"Roboto Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --maxw:64rem; --rhythm:1.1rem;
+}
+
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+body{font-family:var(--font-sans);line-height:1.7;font-size:1rem}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 1rem}
+.section{padding:calc(var(--rhythm)*6) 0}
+.has-bg{background:var(--bg-alt)}
+.has-bg-alt{background:#efeff5}
+.text-center{text-align:center}
+.narrow{max-width:46rem}
+a{color:var(--link);text-decoration:none}
+a:hover,a:focus{color:var(--link-hover);text-decoration:underline}
+
+/* Accessibility */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;padding:.5rem .75rem;background:var(--accent);color:#fff;border-radius:.5rem}
+
+/* ===== HEADER / NAV ===== */
+.site-header{position:sticky;top:0;z-index:10;background:#ffffff;border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;gap:1rem}
+.brand{font-weight:700;letter-spacing:.02em;color:var(--primary)}
+.nav-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+
+/* ===== TYPE SCALE ===== */
+h1,h2,h3{margin:0 0 calc(var(--rhythm)*2);line-height:1.2}
+h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(2rem,2.8vw+1rem,3rem);text-align:center;color:#111;letter-spacing:.01em}
+.lede{font-size:1.125rem;color:var(--muted);text-align:center;margin:0 auto calc(var(--rhythm)*1.5)}
+.byline{display:block;text-align:center;font-style:normal;color:var(--muted);font-size:.95rem;margin-bottom:calc(var(--rhythm)*2.5)}
+h2{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.5rem,1.2vw+1rem,2rem);color:#111;border-bottom:2px solid var(--border);padding-bottom:.35rem;margin-bottom:calc(var(--rhythm)*2.5)}
+h3{font-weight:700;font-size:1.15rem;color:#333;margin-top:calc(var(--rhythm)*3)}
+.eyebrow{font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:.02em;margin-top:calc(var(--rhythm)*3);margin-bottom:.75rem}
+p{margin:0 0 calc(var(--rhythm)*1.25);color:var(--text)}
+strong{color:#000}
+
+/* ===== FIGURES ===== */
+.figure{background:var(--figure-bg);border:1px solid var(--border);border-radius:14px;padding:.75rem;margin:calc(var(--rhythm)*2) 0}
+.figure--center{margin-left:auto;margin-right:auto}
+.figure--wide{border-radius:10px}
+.caption{display:block;margin-top:.5rem;font-size:.9rem;color:var(--muted)}
+.text-center{text-align:center}
+
+/* ===== LAYOUT UTILITIES ===== */
+.stack > * + *{margin-top:1rem}
+
+/* ===== MEDIA (side-by-side, flexbox fix) ===== */
+.media {
+    display: flex;
+    flex-direction: column;   /* stack on mobile */
+    gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .media {
+        flex-direction: row;    /* side-by-side on desktop */
+        align-items: flex-start;
+    }
+    .media__body { flex: 1 1 52%; }
+    .media__figure { flex: 1 1 48%; }
+}
+
+.media__body p { max-width: 60ch; }
+
+.media__figure { margin: 0; }
+.media__figure img { width: 100%; height: auto; display: block; }
+
+
+/* ===== COLUMNS ===== */
+.columns{column-count:1;column-gap:2rem}
+@media (min-width:860px){.columns{column-count:3}}
+
+/* ===== LINKS & BUTTONS ===== */
+.link{position:relative;font-weight:500;color:var(--link)}
+.link:hover{text-decoration:none}
+.link::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:linear-gradient(90deg,var(--accent),var(--primary));opacity:.6;transition:opacity .2s}
+.link:hover::after{opacity:1}
+.btn-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--primary);color:var(--primary-ink);padding:.7rem 1rem;border-radius:999px;font-weight:700;letter-spacing:.01em;border:2px solid transparent;transition:transform .06s,box-shadow .2s,background .2s,border-color .2s;text-decoration:none}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(124,77,255,.25)}
+.btn:active{transform:translateY(0)}
+.btn--outline{background:transparent;border-color:var(--primary);color:var(--primary)}
+.btn--outline:hover{background:rgba(124,77,255,.1)}
+.btn--ghost{background:transparent;border:1px solid var(--border);color:var(--text);padding:.55rem .85rem}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ===== HERO ===== */
+.hero{padding-top:4.5rem}
+.hero .figure{background:transparent;border:none;padding:0}
+
+/* ===== FOOTER ===== */
+.site-footer{border-top:1px solid var(--border);padding:2rem 0 4rem;background:#fafafa}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.small{color:var(--muted);font-size:.9rem}
+.to-top{font-family:var(--font-mono);color:var(--link)}
+
+/* ===== FOCUS ===== */
+a,button{outline-offset:2px}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ========================
+   Custom styles
+======================== */
+
+/* Make all images scale nicely */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Bigger AJ image in hero section */
+.hero img {
+    max-width: 1400px;
+    width: 100%;
+    height: auto;
+}
+
+/* Section spacing */
+.section {
+    padding: 4rem 1rem;
+}
+
+/* Captions style */
+.caption {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.figure--wide img {
+    display: block;
+    max-width: 100%;   /* scales down if too big */
+    width: 100%;       /* stretches full width of container */
+    height: auto;      /* keeps aspect ratio */
+    border-radius: 6px; /* optional: soft corners like your other figures */
+}
+
+/* Big About page banner */
+.banner {
+  margin: 2.5rem auto;
+  max-width: 72rem;          /* wide card */
+  border-radius: 24px;       /* rounded corners */
+  overflow: hidden;          /* hide outside edges */
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.banner__img {
+  display: block;
+  width: 100%;
+  height: auto;              /* keep proportions */
+}
+/* === Global site nav links (consistent across pages) === */
+.site-nav .nav-link{
+  display:inline-block;
+  padding:.55rem .85rem;
+  border-radius:999px;
+  font-weight:600;
+  color:var(--text);
+  border:1px solid var(--border);
+  text-decoration:none;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.site-nav .nav-link:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.site-nav .nav-link.active{
+  border-color:var(--primary);
+  background:rgba(124,77,255,.08);
+  color:var(--primary);
+}
+/* brand color */
+.site-nav .brand{ font-weight:700; letter-spacing:.02em; color:var(--primary); }
+
+/* Typography-style links inside main content only */
+.content a,
+.container a.link {           /* keep support for existing .link usage */
+  position: relative;
+  font-weight: 500;
+  color: var(--link);
+  text-decoration: none;
+}
+.content a:hover { color: var(--link-hover); }
+.content a::after,
+.container a.link::after {
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-2px;
+  height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--primary));
+  opacity:.6;
+  transition:opacity .2s;
+}
+.content a:hover::after,
+.container a.link:hover::after { opacity:1; }
+
+
+/* Bigger-than-h1 page title */
+.page-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.05;
+  margin: 1rem 0 2rem;
+  font-family: var(--font-serif);
+}
+
+/* About layout: photo left, text right */
+.about-layout {
+  margin: calc(var(--rhythm) * 4) 0 calc(var(--rhythm) * 6);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* bigger screens: side-by-side like your classmate’s */
+@media (min-width: 900px) {
+  .about-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .about-photo {
+    flex: 0 0 320px; /* fixed-ish width column for the picture */
+  }
+
+  .about-copy {
+    flex: 1;
+    max-width: 40rem;
+  }
+}
+
+.about-photo {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  background: #000;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-copy p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+
+/* Article sources list */
+.link-list {
+  list-style: disc inside;
+  padding-left: 0;
+}
+.link-list a {
+  text-decoration: underline;
+}
